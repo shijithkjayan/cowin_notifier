@@ -43,8 +43,8 @@ defmodule CowinNotifier do
           :ok
         end
 
-      {:error, status} ->
-        BotHTTPClient.send_error_message(status)
+      {:error, reason} ->
+        BotHTTPClient.send_error_message(reason)
         :error
     end
   end

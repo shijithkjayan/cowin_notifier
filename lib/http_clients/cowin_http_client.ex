@@ -22,4 +22,6 @@ defmodule CowinNotifier.CoWinHTTPClient do
   defp handle_response({:ok, %Tesla.Env{status: 200, body: body}}), do: {:ok, body}
 
   defp handle_response({:ok, %Tesla.Env{status: status}}), do: {:error, status}
+
+  defp handle_response({:error, reason}), do: {:error, reason}
 end

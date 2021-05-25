@@ -19,9 +19,20 @@ defmodule CowinNotifier.BotHTTPClient do
     |> handle_response()
   end
 
-  def send_error_message(status) do
+  def send_error_message(status) when is_integer(status) do
     @path
     |> get(query: [chat_id: @chat_id, text: "Cowin Portal API failed with status: #{status}"])
+    |> handle_response()
+  end
+
+  def send_error_message(reason) do
+    @path
+    |> get(
+      query: [
+        chat_id: @chat_id,
+        text: "Cowin Portal API failed with reason: #{inspect(reason)}"
+      ]
+    )
     |> handle_response()
   end
 
