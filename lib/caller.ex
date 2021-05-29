@@ -18,12 +18,12 @@ defmodule CowinNotifier.Caller do
     |> case do
       :msg_send ->
         IO.inspect(:msg_send)
-        schedule_call(2 * 60 * 60 * 000)
+        schedule_call(2 * 60 * 60 * 1000)
         {:noreply, state}
 
       :error ->
         IO.inspect(:error)
-        schedule_call(30 * 60 * 1000)
+        schedule_call(60 * 1000)
         {:noreply, state}
 
       :ok ->
