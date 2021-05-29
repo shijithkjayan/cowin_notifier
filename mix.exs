@@ -23,11 +23,12 @@ defmodule CowinNotifier.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:plug_cowboy, "~> 2.5.0"},
+      {:plug_cowboy, "~> 2.0"},
       {:tesla, "~> 1.4.0"},
       {:hackney, "~> 1.17.0"},
       {:jason, ">= 1.0.0"},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:distillery, "~> 2.1"}
     ]
   end
 end

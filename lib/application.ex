@@ -6,13 +6,10 @@ defmodule CowinNotifier.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      Plug.Cowboy.child_spec(
-        scheme: :https,
-        plug: CowinNotifier.Endpoint,
-        options: [
-          port: Application.get_env(:cowin_notifier, :port)
-        ]
-      ),
+      {Plug.Cowboy,
+       scheme: :http,
+       plug: CowinNotifier.Router,
+       options: [port: Application.get_env(:cowin_notifier, :port, 8008)]},
       CowinNotifier.Caller
     ]
 
