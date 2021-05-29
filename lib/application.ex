@@ -10,8 +10,7 @@ defmodule CowinNotifier.Application do
         scheme: :https,
         plug: CowinNotifier.Endpoint,
         options: [
-          port: 443
-          # Application.get_env(:cowin_notifier, :port)
+          port: Application.get_env(:cowin_notifier, :port)
         ]
       ),
       CowinNotifier.Caller
