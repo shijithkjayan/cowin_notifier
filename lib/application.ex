@@ -9,7 +9,10 @@ defmodule CowinNotifier.Application do
       Plug.Cowboy.child_spec(
         scheme: :http,
         plug: CowinNotifier.Endpoint,
-        options: [port: Application.get_env(:cowin_notifier, :port)]
+        options: [
+          port: 443
+          # Application.get_env(:cowin_notifier, :port)
+        ]
       ),
       CowinNotifier.Caller
     ]
