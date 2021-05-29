@@ -1,8 +1,8 @@
 defmodule CowinNotifierTest do
   use ExUnit.Case
-  doctest CowinNotifier
+  # doctest CowinNotifier
 
-  test "greets the world" do
-    assert CowinNotifier.hello() == :world
-  end
+  # test "greets the world" do
+  #   assert CowinNotifier.hello() == :world
+  # end
 end
