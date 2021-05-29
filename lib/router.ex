@@ -13,6 +13,10 @@ defmodule CowinNotifier.Router do
 
   # A simple route to test that the server is up
   # Note, all routes must return a connection as per the Plug spec.
+  get "/" do
+    send_resp(conn, 200, "OK")
+  end
+
   get "/ping" do
     send_resp(conn, 200, "pong!")
   end
