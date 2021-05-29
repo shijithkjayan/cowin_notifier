@@ -8,7 +8,7 @@ defmodule CowinNotifier.BotHTTPClient do
   plug(Tesla.Middleware.BaseUrl, "https://api.telegram.org")
   plug(Tesla.Middleware.Headers, [{"content-type", "application/json"}])
   plug(Tesla.Middleware.JSON)
-
+  plug(Tesla.Middleware.Timeout, timeout: 15_000)
   adapter(Tesla.Adapter.Hackney, name: __MODULE__)
 
   @path "/bot1822495834:AAGgKBkt7CbhuPi9aBNTyogyzexpGwRg9LA/sendMessage"
@@ -21,8 +21,15 @@ defmodule CowinNotifier.BotHTTPClient do
   end
 
   def send_error_message(status) when is_integer(status) do
+    user = System.user_home()
+
     @path
-    |> get(query: [chat_id: @chat_id, text: "Cowin Portal API failed with status: #{status}"])
+    |> get(
+      query: [
+        chat_id: @chat_id,
+        text: "Cowin Portal API failed with status: #{status} | User: user"
+      ]
+    )
     |> CoWinHTTPClient.handle_response()
   end
 
