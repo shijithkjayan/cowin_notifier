@@ -6,7 +6,10 @@ defmodule CowinNotifier.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      {Plug.Cowboy, scheme: :http, plug: CowinNotifier.Router, options: [port: 4000]},
+      {Plug.Cowboy,
+       scheme: :http,
+       plug: CowinNotifier.Router,
+       options: [port: Application.get_env(:cowin_notifier, :port, 8008)]},
       CowinNotifier.Caller
     ]
 
