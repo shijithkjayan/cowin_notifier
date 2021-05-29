@@ -27,7 +27,7 @@ defmodule CowinNotifier.BotHTTPClient do
     |> get(
       query: [
         chat_id: @chat_id,
-        text: "Cowin Portal API failed with status: #{status} | User: user"
+        text: "Cowin Portal API failed with status: #{status} | User: #{user}"
       ]
     )
     |> CoWinHTTPClient.handle_response()
