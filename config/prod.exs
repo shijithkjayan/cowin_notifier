@@ -1,3 +1,3 @@
 use Mix.Config
 
-config :cowin_notifier, port: 443]
+config :cowin_notifier, port: 443
