@@ -3,6 +3,7 @@ defmodule CowinNotifier do
   Documentation for `CowinNotifier`.
   """
   alias CowinNotifier.{BotHTTPClient, CoWinHTTPClient}
+  require Logger
 
   @doc """
   Calls the Cowin Portal API and fetches the
@@ -38,13 +39,16 @@ defmodule CowinNotifier do
 
         if text_list != [] do
           BotHTTPClient.send_slot_available_msg(text_list)
+          Logger.info("Message send")
           :msg_send
         else
+          Logger.info("No slots")
           :ok
         end
 
       {:error, reason} ->
         BotHTTPClient.send_error_message(reason)
+        Logger.error("API down")
         :error
     end
   end
